@@ -1,0 +1,9 @@
+[{
+  "modid": "midorics",
+  "name": "Midorics",
+  "description": "Test mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "authorList": ["Luapix"]
+}]
