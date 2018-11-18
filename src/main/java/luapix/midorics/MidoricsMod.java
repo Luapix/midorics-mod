@@ -10,32 +10,32 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = MidoricsMod.MOD_ID, name = MidoricsMod.MOD_NAME, version = MidoricsMod.MOD_VERSION, useMetadata = true)
 public class MidoricsMod {
-    public static final String MOD_ID = "midorics";
-    public static final String MOD_NAME = "Midorics";
-    public static final String MOD_VERSION = "0.1-dev";
-
-    @Mod.Instance
-    public static MidoricsMod instance;
-
-    @SidedProxy(serverSide = "luapix.midorics.proxy.ServerProxy", clientSide = "luapix.midorics.proxy.ClientProxy")
-    public static CommonProxy proxy;
-
+	public static final String MOD_ID = "midorics";
+	public static final String MOD_NAME = "Midorics";
+	public static final String MOD_VERSION = "1-dev";
+	
+	@Mod.Instance
+	public static MidoricsMod instance;
+	
+	@SidedProxy(serverSide = "luapix.midorics.proxy.ServerProxy", clientSide = "luapix.midorics.proxy.ClientProxy")
+	public static CommonProxy proxy;
+	
 	public static Logger logger;
-
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent e) {
-        logger = e.getModLog();
-        logger.info(MOD_NAME + " is loading!");
-        proxy.preInit(e);
-    }
-
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent e) {
-        proxy.init(e);
-    }
-
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) {
-        proxy.postInit(e);
-    }
+	
+	@Mod.EventHandler
+	public void preInit(FMLPreInitializationEvent e) {
+		logger = e.getModLog();
+		logger.info(MOD_NAME + " is loading!");
+		proxy.preInit(e);
+	}
+	
+	@Mod.EventHandler
+	public void init(FMLInitializationEvent e) {
+		proxy.init(e);
+	}
+	
+	@Mod.EventHandler
+	public void postInit(FMLPostInitializationEvent e) {
+		proxy.postInit(e);
+	}
 }
