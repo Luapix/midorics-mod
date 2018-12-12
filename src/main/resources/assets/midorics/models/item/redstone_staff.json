@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "midorics:items/wand_empty"
+    "layer0": "midorics:items/redstone_staff_empty"
   }
 }

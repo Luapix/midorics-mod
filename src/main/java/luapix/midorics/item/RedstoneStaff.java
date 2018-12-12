@@ -7,14 +7,15 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class MidoriteGem extends ItemBase {
-	public MidoriteGem() {
-		super("midorite_gem");
-		this.setCreativeTab(CreativeTabs.MATERIALS);
+public class RedstoneStaff extends ItemBase {
+	public RedstoneStaff() {
+		super("redstone_staff");
+		this.setCreativeTab(CreativeTabs.TOOLS);
+		this.setMaxStackSize(1);
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		tooltip.add("A shiny and electrifying jewel.");
+		tooltip.add("Uses redstone to power a Midorite crystal.");
 	}
 }
