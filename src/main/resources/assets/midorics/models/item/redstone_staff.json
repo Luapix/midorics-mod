@@ -2,5 +2,13 @@
   "parent": "item/handheld",
   "textures": {
     "layer0": "midorics:items/redstone_staff_empty"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "midorics:active": 1
+      },
+      "model": "midorics:item/redstone_staff_active"
+    }
+  ]
 }
