@@ -1,5 +1,8 @@
-item.midorics.midorite_gem.name=Midorite Gem
-tile.midorics.midorite_ore.name=Midorite Ore
-
 advancements.midorics.root.title=Modern Magical Engineer
 advancements.midorics.root.description=Acquire a Midorite Gem
+
+item.midorics.midorite_gem.name=Midorite Gem
+item.midorics.wand.name=Wand
+
+tile.midorics.midorite_ore.name=Midorite Ore
+
