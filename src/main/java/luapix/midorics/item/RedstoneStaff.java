@@ -5,9 +5,11 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -16,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -27,13 +30,13 @@ public class RedstoneStaff extends ItemBase {
 		this.addPropertyOverride(new ResourceLocation("midorics:active"), new IItemPropertyGetter() {
 			@SideOnly(Side.CLIENT)
 			@Override
-			public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entity) {
+			public float apply(@Nonnull ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entity) {
 				return RedstoneStaff.isActive(stack) ? 1.0f : 0.0f;
 			}
 		});
 	}
 	
-	public static boolean isActive(ItemStack stack) {
+	private static boolean isActive(ItemStack stack) {
 		NBTTagCompound crystal = stack.getSubCompound("crystal");
 		return crystal != null;
 	}
@@ -44,16 +47,18 @@ public class RedstoneStaff extends ItemBase {
 	}
 	
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
+	public @Nonnull String getUnlocalizedName(ItemStack stack) {
 		return this.getUnlocalizedName() + (RedstoneStaff.isActive(stack) ? ".active" : ".inactive");
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+	public @Nonnull ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) {
 		ItemStack stack = player.getHeldItem(hand);
 		MidoricsMod.logger.info("You right clicked an " + (isActive(stack) ? "" : "in") + "active Redstone Staff." );
 		if(!world.isRemote && isActive(stack)) {
-			player.addVelocity(0.0, 10.0, 0.0);
+			MidoricsMod.logger.info("Trying to add velocity.");
+			player.addVelocity(0.0, 1.0, 0.0);
+			((EntityPlayerMP) player).connection.sendPacket(new SPacketEntityVelocity(player));
 		}
 		return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 	}
