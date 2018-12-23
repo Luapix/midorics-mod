@@ -3,14 +3,11 @@
   "defaults": {
     "textures": {
       "all": "midorics:blocks/midorite_ore"
-    }
+    },
+    "model": "cube_all"
   },
   "variants": {
-    "normal": {
-      "model": "cube_all"
-    },
-    "inventory": {
-      "model": "cube_all"
-    }
+    "normal": [{}],
+    "inventory": [{}]
   }
 }
