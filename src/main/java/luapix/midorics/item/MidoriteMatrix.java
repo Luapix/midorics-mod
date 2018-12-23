@@ -13,6 +13,7 @@ public class MidoriteMatrix extends ItemBase {
 	public MidoriteMatrix() {
 		super("midorite_matrix");
 		this.setCreativeTab(CreativeTabs.MATERIALS);
+		this.setMaxStackSize(1);
 	}
 	
 	@Override

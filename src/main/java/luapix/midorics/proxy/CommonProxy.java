@@ -1,6 +1,8 @@
 package luapix.midorics.proxy;
 
+import luapix.midorics.MidoricsMod;
 import luapix.midorics.block.ModBlocks;
+import luapix.midorics.gui.ModGuiHandler;
 import luapix.midorics.item.ModItems;
 import luapix.midorics.world.ModWorldGen;
 import net.minecraft.block.Block;
@@ -11,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber
@@ -20,7 +23,7 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent e) {
-	
+		NetworkRegistry.INSTANCE.registerGuiHandler(MidoricsMod.instance, new ModGuiHandler());
 	}
 	
 	public void postInit(FMLPostInitializationEvent e) {
