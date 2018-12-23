@@ -5,6 +5,7 @@ item.midorics.midorite_gem.name=Midorite Gem
 item.midorics.redstone_staff.name=Redstone Staff
 item.midorics.redstone_staff.inactive.name=Redstone Staff (Inactive)
 item.midorics.redstone_staff.active.name=Redstone Staff (Active)
+item.midorics.midorite_matrix=Midorite Matrix
 
 tile.midorics.midorite_ore.name=Midorite Ore
 tile.midorics.inscribing_table.name=Inscribing Table

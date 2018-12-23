@@ -13,16 +13,19 @@ public class ModItems {
 	public static MidoriteGem midoriteGem;
 	@GameRegistry.ObjectHolder("midorics:redstone_staff")
 	public static RedstoneStaff redstoneStaff;
+	@GameRegistry.ObjectHolder("midorics:midorite_matrix")
+	public static MidoriteMatrix midoriteMatrix;
 	
 	
 	public static void registerItems(IForgeRegistry<Item> registry) {
-		registry.registerAll(new MidoriteGem(), new RedstoneStaff());
+		registry.registerAll(new MidoriteGem(), new RedstoneStaff(), new MidoriteMatrix());
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static void registerModels() {
 		midoriteGem.registerModel();
 		redstoneStaff.registerModel();
+		midoriteMatrix.registerModel();
 	}
 	
 	public static void registerDefaultModel(Item item, int meta) {
