@@ -9,7 +9,7 @@ public class InscribingTable extends BlockBase {
 		super("inscribing_table", Material.WOOD);
 		setHardness(3F);
 		setSoundType(SoundType.WOOD);
-		setCreativeTab(CreativeTabs.MISC);
+		setCreativeTab(CreativeTabs.DECORATIONS);
 		setHarvestLevel("axe", 0);
 	}
 }

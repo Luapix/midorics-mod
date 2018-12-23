@@ -23,7 +23,7 @@ public class ModBlocks {
 	}
 	
 	public static void registerModels() {
-		ModItems.registerItemRenderer(Item.getItemFromBlock(midoriteOre), 0);
-		ModItems.registerItemRenderer(Item.getItemFromBlock(inscribingTable), 0);
+		ModItems.registerDefaultModel(Item.getItemFromBlock(midoriteOre), 0);
+		ModItems.registerDefaultModel(Item.getItemFromBlock(inscribingTable), 0);
 	}
 }

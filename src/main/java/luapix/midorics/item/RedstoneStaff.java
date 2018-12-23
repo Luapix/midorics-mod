@@ -1,25 +1,24 @@
 package luapix.midorics.item;
 
 import luapix.midorics.MidoricsMod;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class RedstoneStaff extends ItemBase {
@@ -27,13 +26,6 @@ public class RedstoneStaff extends ItemBase {
 		super("redstone_staff");
 		this.setCreativeTab(CreativeTabs.TOOLS);
 		this.setMaxStackSize(1);
-		this.addPropertyOverride(new ResourceLocation("midorics:active"), new IItemPropertyGetter() {
-			@SideOnly(Side.CLIENT)
-			@Override
-			public float apply(@Nonnull ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entity) {
-				return RedstoneStaff.isActive(stack) ? 1.0f : 0.0f;
-			}
-		});
 	}
 	
 	private static boolean isActive(ItemStack stack) {
@@ -49,6 +41,15 @@ public class RedstoneStaff extends ItemBase {
 	@Override
 	public @Nonnull String getUnlocalizedName(ItemStack stack) {
 		return this.getUnlocalizedName() + (RedstoneStaff.isActive(stack) ? ".active" : ".inactive");
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerModel() {
+		ModelResourceLocation inactiveModel = new ModelResourceLocation(getRegistryName(), "inventory");
+		ModelResourceLocation activeModel = new ModelResourceLocation(getRegistryName() + "_active", "inventory");
+		ModelBakery.registerItemVariants(this, inactiveModel, activeModel);
+		ModelLoader.setCustomMeshDefinition(this, stack -> isActive(stack) ? activeModel : inactiveModel);
 	}
 	
 	@Override

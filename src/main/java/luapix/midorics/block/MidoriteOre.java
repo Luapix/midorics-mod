@@ -13,7 +13,7 @@ public class MidoriteOre extends BlockBase {
 	public MidoriteOre() {
 		super("midorite_ore", Material.ROCK);
 		setHardness(3f);
-		setCreativeTab(CreativeTabs.MATERIALS);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		setHarvestLevel("pickaxe", 2);
 	}
 	

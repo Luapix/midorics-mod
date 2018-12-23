@@ -21,11 +21,11 @@ public class ModItems {
 	
 	@SideOnly(Side.CLIENT)
 	public static void registerModels() {
-		registerItemRenderer(midoriteGem, 0);
-		registerItemRenderer(redstoneStaff, 0);
+		midoriteGem.registerModel();
+		redstoneStaff.registerModel();
 	}
 	
-	public static void registerItemRenderer(Item item, int meta) {
+	public static void registerDefaultModel(Item item, int meta) {
 		ModelLoader.setCustomModelResourceLocation(item, meta,
 				new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
