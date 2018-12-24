@@ -2,7 +2,7 @@ package luapix.midorics.proxy;
 
 import luapix.midorics.MidoricsMod;
 import luapix.midorics.block.ModBlocks;
-import luapix.midorics.gui.ModGuiHandler;
+import luapix.midorics.gui.ModGuis;
 import luapix.midorics.item.ModItems;
 import luapix.midorics.world.ModWorldGen;
 import net.minecraft.block.Block;
@@ -23,7 +23,7 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent e) {
-		NetworkRegistry.INSTANCE.registerGuiHandler(MidoricsMod.instance, new ModGuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(MidoricsMod.instance, new ModGuis());
 	}
 	
 	public void postInit(FMLPostInitializationEvent e) {

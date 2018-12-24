@@ -1,7 +1,7 @@
 package luapix.midorics.item;
 
 import luapix.midorics.MidoricsMod;
-import luapix.midorics.gui.ModGuiHandler;
+import luapix.midorics.gui.ModGuis;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
@@ -61,7 +61,7 @@ public class RedstoneStaff extends ItemBase {
 		ItemStack stack = player.getHeldItem(hand);
 		if(!world.isRemote) {
 			if(player.isSneaking()) {
-				player.openGui(MidoricsMod.instance, ModGuiHandler.REDSTONE_STAFF, world, 0, 0, 0);
+				player.openGui(MidoricsMod.instance, ModGuis.REDSTONE_STAFF, world, 0, 0, 0);
 			} else if(isActive(stack)) {
 				player.addVelocity(0.0, 1.0, 0.0);
 				((EntityPlayerMP) player).connection.sendPacket(new SPacketEntityVelocity(player));

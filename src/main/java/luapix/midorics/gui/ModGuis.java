@@ -7,8 +7,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class ModGuiHandler implements IGuiHandler {
+public class ModGuis implements IGuiHandler {
 	public static final int REDSTONE_STAFF = 1;
+	public static final int INSCRIBING_TABLE = 2;
 	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -17,6 +18,8 @@ public class ModGuiHandler implements IGuiHandler {
 				ItemStack stack = player.getHeldItemMainhand();
 				IItemHandler handler = RedstoneStaff.getItemHandler(stack);
 				return new RedstoneStaffContainer(player.inventory, handler);
+			case INSCRIBING_TABLE:
+				return new InscribingTableContainer(player.inventory, x, y, z);
 			default:
 				return null;
 		}
@@ -29,6 +32,8 @@ public class ModGuiHandler implements IGuiHandler {
 				ItemStack stack = player.getHeldItemMainhand();
 				IItemHandler handler = RedstoneStaff.getItemHandler(stack);
 				return new RedstoneStaffGui(player.inventory, handler);
+			case INSCRIBING_TABLE:
+				return new InscribingTableGui(player.inventory, x, y, z);
 			default:
 				return null;
 		}
